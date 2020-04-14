@@ -1,0 +1,17 @@
+<p>detale works!</p>
+<header>
+<button (click)="ClickGlowna()">Strona Główna</button>
+<button (click)="ClickLista()">Lista Osób</button>
+</header>
+<ul >
+    <ng-container *ngFor="let o of osoba | async ">
+    <li *ngIf="o.key==id" > 
+     <b>Imie: {{o.payload.val().Imie}}, Nazwisko: {{o.payload.val().Nazwisko}}, Wiek: {{o.payload.val().Wiek}}</b> 
+        </li>
+    </ng-container>
+        </ul>
+
+       
+        
+        
+

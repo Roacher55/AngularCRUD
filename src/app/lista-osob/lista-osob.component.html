@@ -1,0 +1,67 @@
+<button (click)="ClickGlowna()">Strona Główna</button>
+<h1><b>Lista Osób</b></h1>
+<p>
+
+    <div>
+       <p> <b>Dodaj Osobę:</b> </p>
+       <p>Imie</p>
+       <p *ngIf="!imie.valid && imie.touched">Wymagane podanie imienia</p>
+    <p>  <input required ngModel name="imie" required ngModel type="text"   #imie="ngModel"/></p>
+    
+    <p>Nazwisko</p>
+    <p *ngIf="!nazwisko.valid && nazwisko.touched">Wymagane podanie nazwiska</p>
+    <p>    <input required ngModel name="nazwisko" type="text"   #nazwisko="ngModel"/></p>
+    
+    <p>Wiek</p>
+    <p *ngIf="!wiek.valid && wiek.touched">Wymagane podanie wieku</p>
+    <p> <input required ngModel required type="number"  #wiek="ngModel"/></p>
+    
+    <p><button [disabled]="!imie.valid || !nazwisko.valid || !wiek.valid" (click)="DodajOsobe(imie, nazwisko, wiek)" >Dodaj</button></p>
+    
+    
+</div>
+
+
+<ul>
+    <li *ngFor="let o of listaOsob | async "> 
+       Imie: {{o.payload.val().Imie}}, Nazwisko: {{o.payload.val().Nazwisko}}, Wiek: {{o.payload.val().Wiek}}
+        <button (click)="ClickDetale(o.key)">Detale</button>
+        <button (click)="Usun(o.key)">Usuń</button>
+      
+      
+      
+      
+        <button  (click)="Ukryj(o)"  >Uaktualnij</button>
+        <label [hidden]="!o.is_hidden">
+           <p> Zmien Imie na: </p>
+         <p>   <input required ngModel name="zmienImie" type="text"  #zmienImie="ngModel"  />
+           <button (click)="UaktualnijImie(o.key, o.payload, zmienImie)">Ok</button>
+        </p>
+        <p> Zmien Nazwisko na: </p>
+          <p>  <input required ngModel name="zmienNazwisko" type="text"  #zmienNazwisko="ngModel"  />
+            <button (click)="UaktualnijNazwisko(o.key, o.payload, zmienNazwisko)">Ok</button>
+        </p>
+        <p> Zmien Wiek na: </p>
+         <p>   <input required ngModel name="zmienWiek" type="number"  #zmienWiek="ngModel"  />
+            <button (click)="UaktualnijWiek(o.key, o.payload, zmienWiek)">Ok</button>
+        </p>
+        <p><button [disabled]="!zmienImie.valid || !zmienNazwisko.valid || !zmienWiek.valid"  (click)="UaktualnijWszystko(o.key, o.payload, zmienImie, zmienNazwisko, zmienWiek  )" >Ok Wszystko</button></p>
+
+
+        
+        
+        
+        </label>
+        
+    </li>
+    
+</ul>
+
+
+
+
+
+
+
+
+
