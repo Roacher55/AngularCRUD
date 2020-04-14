@@ -5,15 +5,15 @@
     <div>
        <p> <b>Dodaj Osobę:</b> </p>
        <p>Imie</p>
-       <p *ngIf="!imie.valid && imie.touched">Wymagane podanie imienia</p>
+       <p class="alert alert-danger" *ngIf="!imie.valid && imie.touched">Wymagane podanie imienia</p>
     <p>  <input required ngModel name="imie" required ngModel type="text"   #imie="ngModel"/></p>
     
     <p>Nazwisko</p>
-    <p *ngIf="!nazwisko.valid && nazwisko.touched">Wymagane podanie nazwiska</p>
+    <p class="alert alert-danger" *ngIf="!nazwisko.valid && nazwisko.touched">Wymagane podanie nazwiska</p>
     <p>    <input required ngModel name="nazwisko" type="text"   #nazwisko="ngModel"/></p>
     
     <p>Wiek</p>
-    <p *ngIf="!wiek.valid && wiek.touched">Wymagane podanie wieku</p>
+    <p class="alert alert-danger" *ngIf="!wiek.valid && wiek.touched">Wymagane podanie wieku</p>
     <p> <input required ngModel required type="number"  #wiek="ngModel"/></p>
     
     <p><button [disabled]="!imie.valid || !nazwisko.valid || !wiek.valid" (click)="DodajOsobe(imie, nazwisko, wiek)" >Dodaj</button></p>
