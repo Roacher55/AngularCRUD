@@ -1,1 +1,1 @@
-Operacje CRUD wykorzystujące Angular i Firebase jako backend.
+Operacje CRUD wykorzystujące Angular i Firebase (backend).
